@@ -1,0 +1,417 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f1e8;
+  --ink: #1f1a17;
+  --muted: #5c534b;
+  --line: #e4d9cc;
+  --paper: #fffdf8;
+  --accent: #0e6b66;
+  --overdue: #8f2d2d;
+  --due: #8a4b08;
+  --done: #1d6b45;
+  font-family: "Atkinson Hyperlegible", "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+  touch-action: manipulation;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.wrap {
+  width: min(100%, 32rem);
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 1.25rem 1rem calc(2.5rem + env(safe-area-inset-bottom));
+  border-top: 8px solid var(--accent);
+  background: var(--bg);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.6rem;
+  line-height: 1.05;
+}
+
+.brand {
+  margin: 0 0 0.15rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.sub,
+.hint,
+.as-of,
+.when,
+.note,
+footer {
+  color: var(--muted);
+}
+
+.sub,
+.as-of,
+.hint,
+.when,
+.note {
+  margin: 0.2rem 0 0;
+}
+
+.summary-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.summary {
+  margin: 0;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.text-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0.4rem 0.55rem;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.banner {
+  margin: 0.8rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border: 2px solid #e2c27a;
+  border-radius: 12px;
+  background: #fff4d6;
+}
+
+.who-bar {
+  margin-top: 1.1rem;
+}
+
+.who-bar h2,
+.section h2,
+.panel h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.members,
+.segment {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+}
+
+.segment.two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.member,
+.segment button,
+.chip {
+  border: 2px solid #cbbba8;
+  border-radius: 14px;
+  background: var(--paper);
+  font-weight: 700;
+}
+
+.member {
+  min-height: 64px;
+  padding: 0.45rem 0.35rem;
+}
+
+.member small {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.member[aria-checked="true"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fffdf8;
+}
+
+.segment button {
+  min-height: 52px;
+}
+
+.segment:not(.two) button {
+  padding-inline: 0.25rem;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.segment button[aria-checked="true"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.section {
+  margin-top: 1.4rem;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+.count {
+  min-width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  padding: 0 0.45rem;
+  border-radius: 999px;
+  background: white;
+  font-weight: 700;
+}
+
+.section.overdue .count {
+  background: var(--overdue);
+  color: white;
+}
+
+.section.due .count {
+  background: var(--due);
+  color: white;
+}
+
+.section.done .count {
+  background: var(--done);
+  color: white;
+}
+
+.tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.card {
+  padding: 0.9rem 0.9rem 0.9rem 1rem;
+  border: 2px solid var(--line);
+  border-left-width: 8px;
+  border-radius: 16px;
+  background: var(--paper);
+}
+
+.card.overdue {
+  border-left-color: var(--overdue);
+}
+
+.card.due {
+  border-left-color: #c47d12;
+}
+
+.card.done {
+  border-left-color: var(--done);
+  background: #f3faf6;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.card.overdue .kicker {
+  color: var(--overdue);
+}
+
+.card.due .kicker {
+  color: var(--due);
+}
+
+.card.done .kicker {
+  color: var(--done);
+}
+
+.card h3 {
+  margin: 0.2rem 0 0;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.card .who {
+  margin: 0.35rem 0 0.7rem;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.note {
+  margin-bottom: 0.2rem;
+}
+
+.done-btn,
+.undo {
+  width: 100%;
+  margin-top: 0.75rem;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.done-btn {
+  min-height: 56px;
+  border: 0;
+  background: var(--accent);
+  color: #fffdf8;
+}
+
+.undo {
+  min-height: 48px;
+  border: 2px solid var(--done);
+  background: transparent;
+  color: var(--done);
+}
+
+.done-btn:disabled,
+.undo:disabled,
+.chip:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.panel {
+  margin-top: 1.6rem;
+  padding: 1rem;
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+  scroll-margin-top: 12px;
+}
+
+.field-label,
+label {
+  display: block;
+  margin: 0.85rem 0 0.35rem;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0.65rem 0.75rem;
+  border: 2px solid #cbbba8;
+  border-radius: 12px;
+  background: white;
+}
+
+::placeholder {
+  color: #8a7e72;
+}
+
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.8rem 0 0.2rem;
+}
+
+.chip {
+  min-height: 48px;
+  padding: 0.4rem 0.8rem;
+  text-align: left;
+}
+
+.answer {
+  min-height: 4.5rem;
+  margin: 0.9rem 0 0;
+  font-size: 1.2rem;
+  line-height: 1.45;
+}
+
+.placeholder {
+  color: var(--muted);
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  background: currentColor;
+  vertical-align: text-bottom;
+  animation: blink 1s steps(1) infinite;
+}
+
+footer {
+  margin-top: 1.6rem;
+  font-size: 0.95rem;
+}
+
+footer p {
+  margin: 0.2rem 0;
+}
+
+.empty {
+  margin: 0;
+  color: var(--muted);
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    animation: none;
+  }
+}
+
+@media (min-width: 700px) {
+  body {
+    background: #e7dfd2;
+  }
+
+  .wrap {
+    margin: 1.5rem auto;
+    min-height: calc(100vh - 3rem);
+    border-radius: 24px;
+    box-shadow: 0 12px 40px rgba(60, 40, 20, 0.08);
+  }
+}
