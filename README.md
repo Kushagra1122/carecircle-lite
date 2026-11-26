@@ -127,4 +127,4 @@ Cursor, with the Grok coding assistant, to implement the app from the brief. The
 
 ## Hours
 
-Replace this with the hours you spent before you submit.
+About 1 hour.
